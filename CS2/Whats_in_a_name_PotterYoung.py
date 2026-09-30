@@ -1,3 +1,13 @@
+'''
+Name: Potter Young
+Description: A menu of functions
+Bugs: None known
+Date: 9/29/26
+Bonuses: Index function, subtotals of consonants & vowels, 
+Log: Version 1.0: 9/29/26 
+
+'''
+
 import random
 
 def main():
@@ -15,23 +25,65 @@ def main():
             else:                                                       # Checking if it's not a valid answer
                 print('Please input a valid answer')                    # Politely asking the user to GET IT RIGHT
 
-    while True:                                                         # Creating a forever loop to activate the other functions
-        function_choice = input('''What function would you like to use?
-        1) Find a letter in your name
-        2) Reverse your name
-        3) Check the vowels in your name
-        4) Check the consonants in your name
-        5) Get your first name
-        6) Get your last name
-        7) Get your middle name(s)
-        8) Check if your name has a hyphen
-        9) Turn your name into all lowercase letters
-        10) Turn your name into all uppercase letters
-        11) Check if your name is a palindrome
-        12) Get your initals
-        13) Randomly shuffle your name
-        X) Quit
-        ''')
+    print('''What function would you like to use?
+    1) Find a letter in your name
+    2) Reverse your name
+    3) Check the vowels in your name
+    4) Check the consonants in your name
+    5) Get your first name
+    6) Get your last name
+    7) Get your middle name(s)
+    8) Check if your name has a hyphen
+    9) Turn your name into all lowercase letters
+    10) Turn your name into all uppercase letters
+    11) Check if your name is a palindrome
+    12) Get your initals
+    13) Randomly shuffle your name
+    X) Quit''')
+
+    while True:                                                                                 # Creating a loop to repeat the choosing functions part of the code
+        function_choice = input('')                                                             # Getting an input to be used as the chosen function
+
+        if function_choice == '1':                                                              # If statements for each of the available functions + x to quit
+            letter = input('What letter do you want to check your name for? ')                  # Asking for an input to be used on the index function
+            if string_index(user_name, letter) < 0:                                             # Checking if it returned as -1 (meaning it was not found)
+                print('That letter was not found')                                              # Printing that it was not found
+            else:
+                print(f'That letter was found in position: {string_index(user_name, letter)}')  # Printing out that it was found in the specific position
+        elif function_choice == '2':
+            print(reverse(user_name))                                                           # Printing the reversed name
+        elif function_choice == '3':
+            vowel_check(user_name)                                                              # Calling the vowel check function
+        elif function_choice == '4':
+            consonant_check(user_name)                                                          # Calling the consonant check function
+        elif function_choice == '5':
+            print(first_name_find(user_name))                                                   # Printing out the first name
+        elif function_choice == '6':
+            print(last_name_find(user_name))                                                    # Printing out the last name
+        elif function_choice == '7':
+            print(middle_name_find(user_name))                                                  # Printing out the middle name(s)
+        elif function_choice == '8':
+            if hyphen_check(user_name) == True:                                                 # Checking if a hyphen was found or not
+                print('A hyphen is in your name!')
+            else:
+                print('There is not a hyphen in your name')
+        elif function_choice == '9':
+            print(my_lower(user_name))                                                          # Printing the name in all lowercases
+        elif function_choice == '10':
+            print(my_upper(user_name))                                                          # Printing the name in all uppercases
+        elif function_choice == '11':
+            if is_palindrome(user_name) == True:                                                # Checking if the name was a palindrome or not
+                print('Your name IS a palindrome!')
+            else:
+                print('Your name is not a palindrome')
+        elif function_choice == '12':
+            print(get_initials(user_name))                                                      # Printing the initals
+        elif function_choice == '13':
+            print(shuffle_name(user_name))                                                      # Printing the shuffled name
+        elif my_lower(function_choice) == 'x':
+            quit()                                                                              # Quitting out of the program
+        else:
+            print('Invalid response, try again.')
 
 def string_index(string, wanted_letter):
     '''
@@ -49,10 +101,11 @@ def string_index(string, wanted_letter):
     for i in range(0, len(string)):         # Checking for each letter in the name
         if string[i] == wanted_letter:      # If the letter was the letter being searched for
             found_pos = i                   # Set the found position variable to the letter
+            break                           # Breaking if the letter was found
     if found_pos == -1:                     # Checking if the found letter variable is in the "not found" state
-        return found_pos                    # Returning the position of the desired letter (or lack there of in this case)
+        return found_pos + 1                # Returning the position of the desired letter (or lack there of in this case)
     else:                                   # If the letter was found
-        return found_pos                    # Returning the position of the desired letter
+        return found_pos + 1                # Returning the position of the desired letter
 
 def reverse(string):
     '''
