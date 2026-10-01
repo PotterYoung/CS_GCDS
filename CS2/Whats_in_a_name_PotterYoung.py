@@ -103,7 +103,7 @@ def string_index(string, wanted_letter):
             found_pos = i                   # Set the found position variable to the letter
             break                           # Breaking if the letter was found
     if found_pos == -1:                     # Checking if the found letter variable is in the "not found" state
-        return found_pos + 1                # Returning the position of the desired letter (or lack there of in this case)
+        return found_pos                    # Returning the position of the desired letter (or lack there of in this case)
     else:                                   # If the letter was found
         return found_pos + 1                # Returning the position of the desired letter
 
@@ -185,9 +185,12 @@ def last_name_find(name):
     Return:
         String: the last word
     '''
-    cut_name = name.split(' ')  # Creating a list of the name split by space
-    last_name = cut_name[-1]    # Setting the variable that will be returned as the last word of the cut name list
-    return last_name            # Returning the last name
+    cut_name = name.split(' ')                  # Creating a list of the name split by space
+    if len(cut_name) <= 2:                      # Checking if the name has only two words 
+            return 'No last name found' 
+    else:  
+        last_name = cut_name[-1]                # Setting the variable that will be returned as the last word of the cut name list
+        return last_name                        # Returning the last name
 
 def middle_name_find(name):
     '''
