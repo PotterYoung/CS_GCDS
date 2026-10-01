@@ -186,7 +186,7 @@ def last_name_find(name):
         String: the last word
     '''
     cut_name = name.split(' ')                  # Creating a list of the name split by space
-    if len(cut_name) <= 2:                      # Checking if the name has only two words 
+    if len(cut_name) < 2:                      # Checking if the name has only two words 
             return 'No last name found' 
     else:  
         last_name = cut_name[-1]                # Setting the variable that will be returned as the last word of the cut name list
