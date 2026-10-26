@@ -3,7 +3,7 @@ Name: Potter Young
 Description: A game of Tic Tac Toe
 Bugs: None known
 Date: 10/21/26
-Bonuses: Customizable symbol, Random turn order,
+Bonuses: Customizable symbol, Random turn order
 Log: Version 1.0: 10/21/26 
 '''
 
