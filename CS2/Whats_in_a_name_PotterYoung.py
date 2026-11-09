@@ -73,9 +73,9 @@ def main():
             print(my_upper(user_name))                                                          # Printing the name in all uppercases
         elif function_choice == '11':
             if is_palindrome(user_name) == True:                                                # Checking if the name was a palindrome or not
-                print('Your name IS a palindrome!')
+                print('Your first name IS a palindrome!')
             else:
-                print('Your name is not a palindrome')
+                print('Your first name is not a palindrome')
         elif function_choice == '12':
             print(get_initials(user_name))                                                      # Printing the initals
         elif function_choice == '13':
@@ -285,7 +285,9 @@ def is_palindrome(name):
     Return:
         Boolean: if the string is a palindrome
     '''
-    name = my_lower(name)       # Making sure no capitals mess up the palindrome checking by making every letter lowercase
+    cut_name = name.split(' ')  # Creating a list of the name split by space
+    first_name = cut_name[0]    # Setting the variable that will be returned as the first word of the cut name list 
+    name = my_lower(first_name) # Making sure no capitals mess up the palindrome checking by making every letter lowercase
     if name == reverse(name):   # Checking if the name is the same as itself reversed
         return True             # Returning a boolean if it is true
     else:                       # If not
