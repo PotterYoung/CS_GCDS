@@ -3,7 +3,7 @@ Name: Potter Young
 Description: A game of Tic Tac Toe
 Bugs: None known
 Date: 10/21/26
-Bonuses: Customizable symbol, Random turn order
+Bonuses: Customizable symbol, Random turn order,
 Log: Version 1.0: 10/21/26 
 '''
 
@@ -25,9 +25,9 @@ def main():
             print('Please input a valid character')
         else:
             break
-
+                            
     print(f'{p2_name} choose a symbol!')
-    while True:
+    while True:                             
             p2 = input('')
             if len(list(p2)) > 1:
                 print('Please put a single character!')
@@ -53,12 +53,12 @@ def main():
             print('something has gone horribly wrong')
 
         while playing == True:
-                                                                                    # Controlling the player turn order, getting specific player inputs, and getting out of the loop if the game is won/a draw
+                                                                                    # Controlling the player turn order
             if coinflip == 1:
-                result = player_turn(board, p1_name, p1)
-                if result == True:
+                result = player_turn(board, p1_name, p1)                            # Getting specific player inputs
+                if result == True:                                                  # Getting out of the loop if the game is won/a draw
                     playing = False
-                    continue
+                    continue                
 
                 result = player_turn(board, p2_name, p2) 
                 if result == True:
@@ -89,6 +89,7 @@ def main():
 
 def player_turn(board, p_name, player): 
     '''
+    Description:
     Calls the player move, and checks if the game is won/a draw
     Args:
         board (str): the board of play
@@ -107,6 +108,7 @@ def player_turn(board, p_name, player):
 
 def print_board(board):
     '''
+    Description:
     Prints out the board
     Args:
         board (str): the board of play
@@ -120,6 +122,7 @@ def print_board(board):
 
 def get_player_move(board, p_name, player):
     '''
+    Description:
     Prompts the player for their move
     Args:
         board (str): the board of play
@@ -197,6 +200,7 @@ def get_player_move(board, p_name, player):
 
 def check_winner(board, player):
     '''
+    Description:
     Checks if the current player has won
     Args:
         board (str): the board of play
@@ -226,6 +230,7 @@ def check_winner(board, player):
 
 def is_draw(board):
     '''
+    Description:
     Checking if all spots are taken
     Args:
         board (str): the board of play
