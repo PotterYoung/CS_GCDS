@@ -36,7 +36,7 @@ def main():
     8) Check if your name has a hyphen
     9) Turn your name into all lowercase letters
     10) Turn your name into all uppercase letters
-    11) Check if your name is a palindrome
+    11) Check if your first name is a palindrome
     12) Get your initals
     13) Randomly shuffle your name
     X) Quit''')
