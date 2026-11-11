@@ -109,6 +109,7 @@ def string_index(string, wanted_letter):
 
 def reverse(string):
     '''
+        Description:
         Reverses a given string
         Args:
             string (str): the string that will be reversed
@@ -124,6 +125,7 @@ def reverse(string):
 
 def vowel_check(name):
     '''
+    Description:
     Searches a given string for all vowels, making individual and total counts
     Args:
         name (str): the string that will be checked
@@ -146,6 +148,7 @@ def vowel_check(name):
 
 def consonant_check(name):
     '''
+    Description:
     Searches a given string for all consonants, making individual and total counts
     Args:
         name (str): the string that will be checked
@@ -167,6 +170,7 @@ def consonant_check(name):
 
 def first_name_find(name):
     '''
+    Description:
     Returns the first word of a given string
     Args:
         name (str): the string that will be checked
@@ -179,6 +183,7 @@ def first_name_find(name):
 
 def last_name_find(name):
     '''
+    Description:
     Returns the last word of a given string
     Args:
         name (str): the string that will be checked
@@ -194,6 +199,7 @@ def last_name_find(name):
 
 def middle_name_find(name):
     '''
+    Description:
     Returns the middle words of a given string
     Args:
         name (str): the string that will be checked
@@ -220,6 +226,7 @@ def middle_name_find(name):
 
 def hyphen_check(name):
     '''
+    Description:
     Checks a string for if it contains a hyphen
     Args:
         name (str): the string that will be checked
@@ -237,6 +244,7 @@ def hyphen_check(name):
 
 def my_lower(string):
     '''
+    Description:
     Returns the given text as lowercase
     Args:
         string (str): the string that will be changed
@@ -258,6 +266,7 @@ def my_lower(string):
 
 def my_upper(string):
     '''
+    Description:
     Returns the given text as uppercase
     Args:
         string (str): the string that will be changed
@@ -279,6 +288,7 @@ def my_upper(string):
 
 def is_palindrome(name):
     '''
+    Description:
     Checks if the string is a palindrome
     Args:
         name (str): the string that will be checked
@@ -295,6 +305,7 @@ def is_palindrome(name):
 
 def get_initials(name):
     '''
+    Description:
     Gets the first letter of each word of the given string
     Args:
         name (str): the string that will be used
@@ -313,6 +324,7 @@ def get_initials(name):
 
 def shuffle_name(name):
     '''
+        Description:
         Randomly shuffles the given string
         Args:
             name (str): the string that will be shuffled
