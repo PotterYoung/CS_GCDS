@@ -235,7 +235,7 @@ def hyphen_check(name):
     '''
     has_hyphen = False          # Creating a boolean for if it contains a hyphen 
     for letter in name:         # Checking each letter of the name
-        if letter == "'":       # If the name is a hyphen:
+        if letter == "-":       # If the name is a hyphen:
             has_hyphen = True   # Setting the boolean to true
     if has_hyphen == True:      # If a hyphen was found
         return True             # Returns that a hyphen was found
