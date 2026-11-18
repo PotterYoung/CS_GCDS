@@ -54,19 +54,29 @@ def main():
             print('Please enter a unique name')
         else:
             break
+    if os.name == 'nt':
+        os.system('cls')
 
+    print_board(p2_atk_board)
+    manual_place_dots(p1_def_board, 5)
+    time.sleep(1)
+    if os.name == 'nt':
+        os.system('cls')
 
+    print_board(p2_atk_board)
+    manual_place_dots(p2_def_board, 5)
+    input(f"Press enter to continue to {p1_name}'s turn")
+    if os.name == 'nt':
+        os.system('cls')
 
-    place_dots(p2_def_board, 5)
-    place_dots(p1_def_board, 5)
     for i in range(10):
         print(f'{10-i} turns remaining!\n')
-        player_turn(p1_def_board, p1_atk_board, p2_def_board)
+        player_turn(p1_def_board, p1_atk_board, p2_def_board, p1_name)
         if dots_remaining(p2_def_board) == 0:
             winner = 1
             break
         print(f'{10-i} turns remaining!\n')
-        player_turn(p2_def_board, p2_atk_board, p1_def_board)
+        player_turn(p2_def_board, p2_atk_board, p1_def_board, p2_name)
         if dots_remaining(p1_def_board) == 0:
             winner = 2
             break
@@ -97,9 +107,9 @@ def clear_board():
             [' ', ' ', ' ', ' ', ' ']]
     return board
 
-def player_turn(pl_def_board, pl_atk_board, en_board):
+def player_turn(pl_def_board, pl_atk_board, en_board, p_name):
     hit = False
-    print('Your base:')
+    print(f"{p_name}'s base:")
     print_board(pl_def_board)
     print('\n=====================\n')
     print('Fire here:')
@@ -135,7 +145,6 @@ def place_dots(board, dot_amount, dot_symbol = 'O'):
                 break
 
 def get_shot():
-    print('Where do you want to shoot? (Use the correct format of A1-E5)')
     while True:
         shot_pos = input('').upper()
         if shot_pos == 'A1':
@@ -213,6 +222,7 @@ def ai_shot(ai_board, en_board):
         return True
 
 def fire_shot(pl_board, en_board):
+    print('Where do you want to shoot? (Use the correct format of A1-E5)')
     cords = get_shot()
     cord_row = cords[0]
     cord_col = cords[1]
@@ -227,12 +237,19 @@ def fire_shot(pl_board, en_board):
         en_board[cord_row][cord_col] = '✴︎'
         return True
 
-def count_dots(board):
-    dots_left = 0
-    for row in range(5):
-        for column in range(5):
-            if board[row][column] == 'X':
-                dots_left += 1
-    return dots_left
+def manual_place_dots(board, dot_amount, dot_symbol = 'O'):
+    print('Where do you want to place your dots? (Use the correct format of A1-E5)')
+    for i in range(dot_amount):
+        while True:
+            cords = get_shot()
+            cord_row = cords[0]
+            cord_col = cords[1]
+            playsound.playsound('capture.mp3')
+            if board[cord_row][cord_col] == ' ':
+                board[cord_row][cord_col] = dot_symbol
+                print_board(board)
+                break
+            else:
+                print('That position is full')
 
 main()
