@@ -1,6 +1,4 @@
 # The idea: medieval theming (instead of water with ships like a kingdom with buildings), player vs player, 
-# when a place is hit there's like a fire, playsound for like the sounds and stuff
-# before the rows on the print board function do like A and 1 like a google sheet
 # make it blank between each turn with a press enter to continue to switch each player's turn
 # maybe have optional challenges/other modes like a certain square that instantly loses you the game and other stuff
 
@@ -54,42 +52,59 @@ def main():
             print('Please enter a unique name')
         else:
             break
-    if os.name == 'nt':
-        os.system('cls')
 
-    print_board(p2_atk_board)
-    manual_place_dots(p1_def_board, 5)
-    time.sleep(1)
-    if os.name == 'nt':
-        os.system('cls')
+    while True:
+        if os.name == 'nt':
+            os.system('cls')
 
-    print_board(p2_atk_board)
-    manual_place_dots(p2_def_board, 5)
-    input(f"Press enter to continue to {p1_name}'s turn")
-    if os.name == 'nt':
-        os.system('cls')
+        print_board(p2_atk_board)
+        manual_place_dots(p1_def_board, 5)
+        time.sleep(1)
+        if os.name == 'nt':
+            os.system('cls')
 
-    for i in range(10):
-        print(f'{10-i} turns remaining!\n')
-        player_turn(p1_def_board, p1_atk_board, p2_def_board, p1_name)
-        if dots_remaining(p2_def_board) == 0:
-            winner = 1
-            break
-        print(f'{10-i} turns remaining!\n')
-        player_turn(p2_def_board, p2_atk_board, p1_def_board, p2_name)
-        if dots_remaining(p1_def_board) == 0:
-            winner = 2
-            break
-    if os.name == 'nt':
-        os.system('cls')
-    if winner == 1:
-        print(f'{p1_name} has won!')
-        playsound.playsound('confetti.mp3')
-    elif winner == 2:
-        print(f'{p2_name} has won!')
-        playsound.playsound('confetti.mp3')
-    else:
-        print('Tie')
+        print_board(p2_atk_board)
+        manual_place_dots(p2_def_board, 5)
+        input(f"Press enter to continue to {p1_name}'s turn")
+        if os.name == 'nt':
+            os.system('cls')
+
+        for i in range(10):
+            print(f'{10-i} turns remaining!\n')
+            player_turn(p1_def_board, p1_atk_board, p2_def_board, p1_name)
+            if dots_remaining(p2_def_board) == 0:
+                winner = 1
+                break
+            print(f'{10-i} turns remaining!\n')
+            player_turn(p2_def_board, p2_atk_board, p1_def_board, p2_name)
+            if dots_remaining(p1_def_board) == 0:
+                winner = 2
+                break
+        if os.name == 'nt':
+            os.system('cls')
+        if winner == 1:
+            print(f'{p1_name} has won!')
+            playsound.playsound('confetti.mp3')
+        elif winner == 2:
+            print(f'{p2_name} has won!')
+            playsound.playsound('confetti.mp3')
+        else:
+            print('Tie')
+
+        print('Do you want to play again? (Y/N) ')
+        while True:
+            pa_answer = input('').lower()
+            if pa_answer == 'n':
+                break
+            elif pa_answer == 'y':
+                break
+            else:
+                print('Please enter a valid input')
+        if pa_answer == 'n':
+            quit()
+        elif pa_answer == 'y':
+            continue
+    
 
 def print_board(board):
     print('  A   B   C   D   E')
